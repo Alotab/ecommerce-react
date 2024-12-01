@@ -6,8 +6,10 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BalanceIcon from "@mui/icons-material/Balance";
 import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartReducer";
+import { useDispatch } from "react-redux";
+
 
 const Product = () => {
   const id = useParams().id;
@@ -16,7 +18,7 @@ const Product = () => {
 
   const dispatch = useDispatch();
   const { data, loading, error } = useFetch(`https://api.escuelajs.co/api/v1/products/${id}`);
-
+  // console.log(data)
   return (
     <div className="product">
       {loading ? (
@@ -26,19 +28,19 @@ const Product = () => {
           <div className="left">
             <div className="images">
               <img
-                src={data?.attributes?.img?.data?.attributes?.url}
+                src={data?.images[0]}
                 alt=""
                 onClick={(e) => setSelectedImg("img")}
               />
               <img
-                src={data?.attributes?.img2?.data?.attributes?.url}
+                src={data?.images[1]}
                 alt=""
                 onClick={(e) => setSelectedImg("img2")}
               />
             </div>
             <div className="mainImg">
               <img
-                src={data?.attributes[selectedImg]?.data?.attributes?.url}
+                src={data?.images[selectedImg === "img" ? 0 : 1]}
                 alt=""
               />
             </div>
@@ -67,7 +69,7 @@ const Product = () => {
                     title: data.title,
                     desc: data.description,
                     price: data.price,
-                    // img: data.img.data.attributes.url,
+                    img: data.images[0],
                     quantity,
                   })
                 )
