@@ -7,10 +7,17 @@ import { Outlet, Link  } from "react-router-dom";
 import "./Navbar.scss"
 import Cart from '../Cart/Cart';
 import { useState } from 'react';
-// import React from 'react'
+import { useSelector } from 'react-redux';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js'
+
+
+const stripePromise = loadStripe('pk_test_51QRINRLwnSvfXNcbUGiFt7Ov4tpV8sOMcFIzT2UJ3phtcsiKmAAQ0XCXxgHGge7oI8YtUrzvZRxvtLQJ7KOwGy6d00y257bwIo')
+
 
 const Navbar = () => {
     const [open, setOpen] = useState(false)
+    const products = useSelector((state) => state.cart.products);
   return (
     <div className='navbar'>
         <div className="wrapper">
@@ -57,12 +64,14 @@ const Navbar = () => {
                     <FavoriteBorderOutlinedIcon />
                     <div className="cartIcon" onClick={() => setOpen(!open)}>
                         <ShoppingCartOutlinedIcon />
-                        <span>0</span>
+                        <span>{products.length}</span>
                     </div>
                 </div>
             </div>
         </div>
-        {open && <Cart />}
+        <Elements stripe={stripePromise}> 
+            {open && <Cart />}
+        </Elements>
        
     </div>
   );

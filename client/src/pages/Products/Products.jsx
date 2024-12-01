@@ -6,17 +6,11 @@ import useFetch from "../../hooks/useFetch";
 import "./Products.scss";
 
 
-//https://api.escuelajs.co/api/v1/categories
+
 const Products = () => {
   const catId = parseInt(useParams().id); // convert id intp integer
   const [maxPrice, setMaxPrice] = useState(1000);
-  // const [sort, setSort] = useState(null);
-  // const [selectedSubCats, setSelectedSubCats] = useState([]);
-
-  // const { data, loading, error } = useFetch(
-  //   `/sub-categories?[filters][categories][id][$eq]=${catId}`
-  // );
-
+ 
   const { data, loading, error } = useFetch(
     `https://api.escuelajs.co/api/v1/categories/${catId}`
   );

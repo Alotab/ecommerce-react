@@ -5,16 +5,13 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useSelector } from "react-redux";
 import { removeItem, resetCart } from "../../redux/cartReducer";
 import { useDispatch } from "react-redux";
-import { makeRequest } from "../../makeRequest";
-import { loadStripe } from "@stripe/stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 
 
 
 const Cart = () => {
   const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
-
-  // console.log(products);
 
   const totalPrice = () => {
     let total = 0;
@@ -24,34 +21,42 @@ const Cart = () => {
     return total.toFixed(2);
   };
 
-  const stripePromise = loadStripe(
-    "pk_test_eOTMlr8usx1ctymXqrik0ls700lQCsX2UB"
-  );
-  const handlePayment = async () => {
-    try {
-      const stripe = await stripePromise;
-      const res = await makeRequest.post("/orders", {
-        products,
-      });
-      await stripe.redirectToCheckout({
-        sessionId: res.data.stripeSession.id,
-      });
 
+  const handlePayments = async (e) => {
+    // e.preventDefault()
+    console.log('Cart Products: ', products);
+  
+    try {
+      const response = await fetch('http://localhost:4000/checkout', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({products: products})
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Error fetching orders: ${response.statusText}`);
+      }
+  
+      const responseJson = await response.json();
+  
+      if (responseJson.url) {
+        window.location.assign(responseJson.url)
+      }
+  
     } catch (err) {
-      console.log(err);
+      console.error("Error handling payment:", err);
     }
   };
 
 
-
-  // console.log(productImage(4));
   return (
     <div className="cart">
       <h1>Products in your cart</h1>
       {products?.map((item, idx) => (
         <div className="item" key={item.id}>
           <img src={item.img} alt="" />
-          {/* <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" /> */}
           <div className="details">
             <h1>{item.title}</h1>
             <p>{item.desc?.substring(0, 100)}</p>
@@ -69,7 +74,7 @@ const Cart = () => {
         <span>SUBTOTAL</span>
         <span>${totalPrice()}</span>
       </div>
-      <button onClick={handlePayment}>PROCEED TO CHECKOUT</button>
+      <button onClick={handlePayments}>PROCEED TO CHECKOUT</button>
       <span className="reset" onClick={() => dispatch(resetCart())}>
         Reset Cart
       </span>
@@ -78,15 +83,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-
-
-// [
-//   {
-//       "id": 4,
-//       "title": "Classic Grey Hooded Sweatshirt",
-//       "desc": "Elevate your casual wear with our Classic Grey Hooded Sweatshirt. Made from a soft cotton blend, this hoodie features a front kangaroo pocket, an adjustable drawstring hood, and ribbed cuffs for a snug fit. Perfect for those chilly evenings or lazy weekends, it pairs effortlessly with your favorite jeans or joggers.",
-//       "price": 90,
-//       "quantity": 17
-//   }
-// ]
