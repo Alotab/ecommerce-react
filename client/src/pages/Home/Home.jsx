@@ -6,13 +6,13 @@ import FeatureProducts from '../../components/FeaturedProjects/FeatureProducts'
 import Slider from '../../components/Slider/Slider'
 import "./Home.scss"
 
-const Home = () => {
+const Home = ({ type }) => {
   return (
     <div className='home'>
       <Slider />
-      <FeatureProducts type={Featured}/>
+      <FeatureProducts />
       <Categories />
-      <FeatureProducts type={Trending}/>
+      <FeatureProducts />
       <Contact />
     </div>
   )

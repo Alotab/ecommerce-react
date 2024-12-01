@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
+// import { makeRequest } from "../makeRequest";
 import { makeRequest } from "../makeRequest";
+import axios from "axios";
+
+//'https://api.escuelajs.co/api/v1/products'
 
 const useFetch = (url) => {
   const [data, setData] = useState(null);
@@ -10,8 +14,8 @@ const useFetch = (url) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await makeRequest.get(url);
-        setData(res.data.data);
+        const res =  await axios.get(url);
+        setData(res.data);
       } catch (err) {
         setError(true);
       }
@@ -19,8 +23,23 @@ const useFetch = (url) => {
     };
     fetchData();
   }, [url]);
-
+  // console.log(data)
   return { data, loading, error };
 };
 
 export default useFetch;
+
+
+
+// useEffect(() => {
+//   const fetchData = async () => {
+//     try {
+//       const res = await axios.get('https://api.escuelajs.co/api/v1/products');
+//       setData(res.data)
+//       // console.log(data)
+//     } catch (error) {
+//       setError(error);; // Log the error message
+//     }
+//   };
+//   fetchData();
+// }, []);

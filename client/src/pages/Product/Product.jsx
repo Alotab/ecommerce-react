@@ -15,7 +15,7 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
-  const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
+  const { data, loading, error } = useFetch(`https://api.escuelajs.co/api/v1/products/${id}`);
 
   return (
     <div className="product">
@@ -26,36 +26,27 @@ const Product = () => {
           <div className="left">
             <div className="images">
               <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img?.data?.attributes?.url
-                }
+                src={data?.attributes?.img?.data?.attributes?.url}
                 alt=""
                 onClick={(e) => setSelectedImg("img")}
               />
               <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img2?.data?.attributes?.url
-                }
+                src={data?.attributes?.img2?.data?.attributes?.url}
                 alt=""
                 onClick={(e) => setSelectedImg("img2")}
               />
             </div>
             <div className="mainImg">
               <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes[selectedImg]?.data?.attributes?.url
-                }
+                src={data?.attributes[selectedImg]?.data?.attributes?.url}
                 alt=""
               />
             </div>
           </div>
           <div className="right">
-            <h1>{data?.attributes?.title}</h1>
-            <span className="price">${data?.attributes?.price}</span>
-            <p>{data?.attributes?.desc}</p>
+            <h1>{data?.title}</h1>
+            <span className="price">${data?.price}</span>
+            <p>{data?.description}</p>
             <div className="quantity">
               <button
                 onClick={() =>
@@ -73,10 +64,10 @@ const Product = () => {
                 dispatch(
                   addToCart({
                     id: data.id,
-                    title: data.attributes.title,
-                    desc: data.attributes.desc,
-                    price: data.attributes.price,
-                    img: data.attributes.img.data.attributes.url,
+                    title: data.title,
+                    desc: data.description,
+                    price: data.price,
+                    // img: data.img.data.attributes.url,
                     quantity,
                   })
                 )
