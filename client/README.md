@@ -69,7 +69,7 @@ The backend server, powered by Express, interacts with Stripe for processing pay
 
 4. Start the app:
 
-   ~Frontend:
+   ### Frontend:
 
    To start the frontend React app, run:
 
@@ -80,7 +80,7 @@ The backend server, powered by Express, interacts with Stripe for processing pay
 
    The frontend should now be running on http://localhost:5173/
 
-   Backend:
+   #### Backend:
 
    To start the Express API server, run:
 
