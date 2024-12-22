@@ -69,7 +69,7 @@ The backend server, powered by Express, interacts with Stripe for processing pay
 
 4. Start the app:
 
-   ~Frontend~:
+   ~Frontend:
 
    To start the frontend React app, run:
 
