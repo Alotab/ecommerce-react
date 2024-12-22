@@ -22,12 +22,12 @@ The backend server, powered by Express, interacts with Stripe for processing pay
 1. Clone the repository:
 
    ```
-   Clone the repository:
+   git clone https://github.com/Alotab/ecommerce-react.git
    ```
 
 2. Install dependencies:
 
-   Frontend (React):
+   #### Frontend (React):
 
    Navigate to the client directory (or your frontend folder) and run:
 
@@ -36,7 +36,7 @@ The backend server, powered by Express, interacts with Stripe for processing pay
    npm install
    ```
 
-   Backend (Express API):
+   #### Backend (Express API):
 
    Navigate to the api directory (or your backend folder) and run:
 
@@ -49,7 +49,7 @@ The backend server, powered by Express, interacts with Stripe for processing pay
 
 3. Set up environment variables:
 
-   Frontend:
+   #### Frontend:
 
    In your `.env` file in the frontend directory (e.g., /client), add your Stripe keys:
 
@@ -57,7 +57,7 @@ The backend server, powered by Express, interacts with Stripe for processing pay
    REACT_APP_STRIPE_PUBLISHABLE_KEY=your-publishable-key
    ```
 
-   Backend:
+   #### Backend:
 
    In the `.env` file in the backend directory (e.g., /api), add your Stripe secret key:
 
@@ -69,7 +69,7 @@ The backend server, powered by Express, interacts with Stripe for processing pay
 
 4. Start the app:
 
-   ### Frontend:
+   #### Frontend:
 
    To start the frontend React app, run:
 
