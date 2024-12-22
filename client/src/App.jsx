@@ -10,6 +10,7 @@ import Products from './pages/Products/Products'
 import Product from './pages/Product/Product'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
+import Cancel from './pages/Cancel'
 import "./app.scss"
 // This creates a layout for the Navbar and Footer to appear in some pages in the app
 // The Outlet in between will represent the apps that will have Navbar and Footer in their pages
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             {
                 path:"/product/:id",
                 element:<Product />
+            },
+            {
+                path:"/cancel",
+                element:<Cancel />
             }
         ]
     }
