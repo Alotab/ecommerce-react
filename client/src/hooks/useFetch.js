@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import { makeRequest } from "../makeRequest";
 import { makeRequest } from "../makeRequest";
 import axios from "axios";
 
@@ -28,18 +27,3 @@ const useFetch = (url) => {
 };
 
 export default useFetch;
-
-
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     try {
-//       const res = await axios.get('https://api.escuelajs.co/api/v1/products');
-//       setData(res.data)
-//       // console.log(data)
-//     } catch (error) {
-//       setError(error);; // Log the error message
-//     }
-//   };
-//   fetchData();
-// }, []);
