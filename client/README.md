@@ -21,31 +21,31 @@ The backend server, powered by Express, interacts with Stripe for processing pay
 
 1. Clone the repository:
 
-    ```
-    Clone the repository:
-    ```
+   ```
+   Clone the repository:
+   ```
 
 2. Install dependencies:
-   
+
    Frontend (React):
 
    Navigate to the client directory (or your frontend folder) and run:
 
-    ```
-    cd client
-    npm install
-    ```
+   ```
+   cd client
+   npm install
+   ```
 
-    Backend (Express API):
+   Backend (Express API):
 
-    Navigate to the api directory (or your backend folder) and run:
+   Navigate to the api directory (or your backend folder) and run:
 
-    ```
-    cd api
-    npm install
-    ```
+   ```
+   cd api
+   npm install
+   ```
 
-    This will install all necessary dependencies for both the frontend and backend.
+   This will install all necessary dependencies for both the frontend and backend.
 
 3. Set up environment variables:
 
@@ -53,39 +53,40 @@ The backend server, powered by Express, interacts with Stripe for processing pay
 
    In your `.env` file in the frontend directory (e.g., /client), add your Stripe keys:
 
-    ```
-    REACT_APP_STRIPE_PUBLISHABLE_KEY=your-publishable-key
-    ```
+   ```
+   REACT_APP_STRIPE_PUBLISHABLE_KEY=your-publishable-key
+   ```
 
-    Backend:
+   Backend:
 
-    In the `.env` file in the backend directory (e.g., /api), add your Stripe secret key:
+   In the `.env` file in the backend directory (e.g., /api), add your Stripe secret key:
 
-    ```
-    STRIPE_SECRET_KEY=your-secret-key
-    ```
+   ```
+   STRIPE_SECRET_KEY=your-secret-key
+   ```
 
-    Make sure you replace your-publishable-key and your-secret-key with your actual Stripe API keys, which you can obtain from your Stripe account.
+   Make sure you replace your-publishable-key and your-secret-key with your actual Stripe API keys, which you can obtain from your Stripe account.
 
-4.  Start the app:
+4. Start the app:
 
-    Frontend:
+   ~Frontend~:
 
-    To start the frontend React app, run:
+   To start the frontend React app, run:
 
-    ```
-    cd client
-    npm start
-    ```
-    The frontend should now be running on http://localhost:5173/
+   ```
+   cd client
+   npm start
+   ```
 
-    Backend:
-    
-    To start the Express API server, run:
-    ```
-    cd api
-    npm start
-    ```
-    The backend API server should now be running on http://localhost:4000.
+   The frontend should now be running on http://localhost:5173/
 
+   Backend:
 
+   To start the Express API server, run:
+
+   ```
+   cd api
+   npm start
+   ```
+
+   The backend API server should now be running on http://localhost:4000.
