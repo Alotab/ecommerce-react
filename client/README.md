@@ -26,7 +26,9 @@ The backend server, powered by Express, interacts with Stripe for processing pay
     ```
 
 2. Install dependencies:
+   
    Frontend (React):
+
    Navigate to the client directory (or your frontend folder) and run:
 
     ```
@@ -35,6 +37,7 @@ The backend server, powered by Express, interacts with Stripe for processing pay
     ```
 
     Backend (Express API):
+
     Navigate to the api directory (or your backend folder) and run:
 
     ```
@@ -45,7 +48,9 @@ The backend server, powered by Express, interacts with Stripe for processing pay
     This will install all necessary dependencies for both the frontend and backend.
 
 3. Set up environment variables:
+
    Frontend:
+
    In your `.env` file in the frontend directory (e.g., /client), add your Stripe keys:
 
     ```
@@ -53,6 +58,7 @@ The backend server, powered by Express, interacts with Stripe for processing pay
     ```
 
     Backend:
+
     In the `.env` file in the backend directory (e.g., /api), add your Stripe secret key:
 
     ```
@@ -62,7 +68,9 @@ The backend server, powered by Express, interacts with Stripe for processing pay
     Make sure you replace your-publishable-key and your-secret-key with your actual Stripe API keys, which you can obtain from your Stripe account.
 
 4.  Start the app:
+
     Frontend:
+
     To start the frontend React app, run:
 
     ```
@@ -72,6 +80,7 @@ The backend server, powered by Express, interacts with Stripe for processing pay
     The frontend should now be running on http://localhost:5173/
 
     Backend:
+    
     To start the Express API server, run:
     ```
     cd api
